@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+release/
+*.tsbuildinfo
+.DS_Store
+.env*
+
+# Real Claude Code logs never leave this machine.
+fixtures/raw/
+*.jsonl
+!fixtures/anon/**/*.jsonl

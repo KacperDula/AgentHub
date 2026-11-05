@@ -1,0 +1,43 @@
+{
+  "name": "agenttrace",
+  "private": true,
+  "version": "0.2.0",
+  "description": "AgentTrace Desktop: see live what your Claude Code agents are doing. Local-first, open source.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/ui",
+    "apps/desktop"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @agenttrace/ui && npm run dev -w @agenttrace/desktop",
+    "dev:ui": "npm run dev -w @agenttrace/ui",
+    "build": "npm run build -w @agenttrace/ui && npm run build -w @agenttrace/desktop",
+    "dist": "npm run build && npm run dist -w @agenttrace/desktop",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "anonymize": "node scripts/anonymize.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.10.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "allowScripts": {
+    "better-sqlite3": false,
+    "electron-winstaller": false,
+    "fsevents": false
+  }
+}

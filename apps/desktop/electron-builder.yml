@@ -1,0 +1,50 @@
+appId: dev.agenttrace.desktop
+productName: AgentTrace
+copyright: Copyright © AgentTrace contributors
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+extraResources:
+  - from: ../../packages/ui/dist
+    to: ui
+  - from: build
+    to: .
+    filter: ["icon.png", "tray*.png"]
+asarUnpack:
+  - "**/node_modules/better-sqlite3/**"
+# better-sqlite3 ships N-API prebuilds for every platform (ABI-stable across Node and Electron),
+# so nothing needs compiling at package time.
+npmRebuild: false
+mac:
+  target:
+    - target: dmg
+      arch: [universal]
+  category: public.app-category.developer-tools
+  icon: build/icon.png
+  hardenedRuntime: true
+  # Signing and notarization switch on when CSC_LINK / APPLE_* secrets are set in CI.
+dmg:
+  artifactName: AgentTrace-${version}-mac-universal.${ext}
+win:
+  target:
+    - target: nsis
+      arch: [x64, arm64]
+  icon: build/icon.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  artifactName: AgentTrace-${version}-win-${arch}-setup.${ext}
+linux:
+  target: [AppImage, deb]
+  category: Development
+  icon: build/icon.png
+  maintainer: AgentTrace contributors <agenttrace@users.noreply.github.com>
+  artifactName: AgentTrace-${version}-linux-${arch}.${ext}
+publish:
+  provider: github
+  owner: KacperDula
+  repo: AgentHub
+  releaseType: draft
