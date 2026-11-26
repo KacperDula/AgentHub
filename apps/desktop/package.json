@@ -15,8 +15,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^1.5.0",
-    "better-sqlite3": "^13.0.3",
+    "@anthropic-ai/sdk": "^1.12.0",
+    "better-sqlite3": "^13.2.0",
     "electron-updater": "^6.8.11",
     "qrcode": "^1.5.4"
   },
@@ -24,7 +24,7 @@
     "@agenttrace/core": "*",
     "@types/better-sqlite3": "^9.6.0",
     "@types/qrcode": "^1.5.6",
-    "electron": "45.2.3",
+    "electron": "45.4.1",
     "electron-builder": "^26.18.0",
     "electron-vite": "^6.0.0"
   }
